@@ -3,36 +3,49 @@
 <head>
 	<meta charset="utf-8">
 	<script>
+
 		function setSearchEngine(){
-			console.log("test");
+			let test = document.querySelector("input[name=engine]:checked");
+			let actions = {
+   			"google": "https://www.google.com/",
+   			"duckDuckGo": "https://duckduckgo.com/",
+   			"bing": "https://www.bing.com/search",
+   			"ask": "https://www.ask.com/web"
+			};
+			return actions[test.value];
+
 		}
 		// TODO: create a handler
     window.addEventListener("load", function(){
 		let form = document.querySelector("form");
-		form.addEventListener("submit", setSearchEngine())
+		form.addEventListener("submit", function() {
+			form.action=setSearchEngine();
+		});
+		
     });
 	</script>
 </head>
-
+<!-- file:///C:/Users/Ricky/lc101/HTTP-and-Forms-Studio/Studio25/index.html?q=hoisted&engine=google -->
+<!-- file:///C:/Users/lawre/launchcode/Studio25/actions[setSearchEngine]?q=wow&engine=google-->
 <body>
 
-	<form id="searchForm" action="">
+	<form id="searchForm">
 	<!-- TODO: add form elements -->
 	<label>Search
 		<input type="text" name="q" />
 	</label>
 	Search Engine:
-	<label>Google
-		<input type="radio" name="engine" value="google"/>
+	<label>
+		<input type="radio" name="engine" value="google"/>Google
 	</label>
-	<label>DuckDuckGo
-		<input type="radio" name="engine" value="duckDuckGo"/>
+	<label>
+		<input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo
 	</label>
-	<label>Bing
-		<input type="radio" name="engine" value="bing"/>
+	<label>
+		<input type="radio" name="engine" value="bing"/>Bing
 	</label>
-	<label>Ask
-		<input type="radio" name="engine" value="ask"/>
+	<label>
+		<input type="radio" name="engine" value="ask"/>Ask
 	</label>
 	<button>Go!</button>
 	</form>
